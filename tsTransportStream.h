@@ -82,13 +82,34 @@ public:
   void     Print() const;
 
 public:
-  //TODO - direct acces to header field value, e.g.:
-  uint8_t  getSyncByte() const { return m_SB; }  
+  /// @brief Returns Sync byte
+  uint8_t  getSyncByte() const { return m_SB; }
+
+  /// @brief Returns transport error indicator 
+  uint8_t  getE() const { return m_E; }
+
+  /// @brief Returns payload unit start indicator 
+  uint8_t  getS() const { return m_S; } 
+
+  /// @brief Returns transport priority  
+  uint8_t  getT() const { return m_T; }
+
+  /// @brief Returns packet Identifier 
+  uint16_t getPID() const { return m_PID; }
+
+  /// @brief Returns transport scrambling control  
+  uint8_t  getTSC() const { return m_TSC; }
+
+  /// @brief Returns adaptation field control  
+  uint8_t  getAFC() const { return m_AFC; }
+  
+  /// @brief Returns continuity counter   
+  uint8_t  getCC() const { return m_CC; }
+
 
 public:
-  //TODO - derrived informations
-  //bool     hasAdaptationField() const { /*TODO*/ }
-  //bool     hasPayload        () const { /*TODO*/ }
+  bool     hasAdaptationField() const { if(getAFC() == 0b01 || getAFC() == 0b00){return false;} else return true;}
+  bool     hasPayload        () const { if(getAFC() == 0b11){return true;} else return false;}
 };
 
 //=============================================================================================================================================================================
