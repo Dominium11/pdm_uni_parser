@@ -37,14 +37,17 @@ int32_t xTS_PacketHeader::Parse(const uint8_t* Input)
 void xTS_PacketHeader::Print() const
 {
   printf(" TS: ");
-  printf(" SB=%u ", m_SB);
-  printf(" E=%u ", m_E);
-  printf(" S=%u ", m_S);
-  printf(" P=%u ", m_T);
-  printf(" PID=%u ", m_PID);
-  printf(" TSC=%u ", m_TSC);
-  printf(" AF=%u ", m_AFC);
-  printf(" CC=%u ", m_CC);
+  printf(" SB=%u", m_SB);
+  printf(" E=%u", m_E);
+  printf(" S=%u", m_S);
+  printf(" P=%u", m_T);
+  if(m_PID <= 9) {printf(" PID=%u   ", m_PID);}
+  else if (m_PID <= 99){printf(" PID=%u  ", m_PID);}
+  else if (m_PID <= 999){printf(" PID=%u ", m_PID);}
+  else {printf(" PID=%u", m_PID);}
+  printf(" TSC=%u", m_TSC);
+  printf(" AF=%u", m_AFC);
+  printf(" CC=%u", m_CC);
 }
 
 //=============================================================================================================================================================================
