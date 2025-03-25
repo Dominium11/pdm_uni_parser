@@ -46,7 +46,7 @@ void xTS_PacketHeader::Print() const
   else if (m_PID <= 999){printf(" PID=%u ", m_PID);}
   else {printf(" PID=%u", m_PID);}
   printf(" TSC=%u", m_TSC);
-  printf(" AF=%u", m_AFC);
+  printf(" AFC=%u", m_AFC);
   printf(" CC=%u", m_CC);
 }
 
